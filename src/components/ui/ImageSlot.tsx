@@ -32,7 +32,7 @@ export function ImageSlot({
   }
   const glow =
     tone === "before"
-      ? "radial-gradient(120% 90% at 30% 20%, rgb(120 113 108 / 0.35), transparent 60%)"
+      ? "radial-gradient(120% 90% at 30% 20%, rgb(168 162 158 / 0.30), transparent 65%)"
       : "radial-gradient(120% 90% at 70% 15%, rgb(255 90 31 / 0.28), transparent 60%)";
   return (
     <div
