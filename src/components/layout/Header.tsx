@@ -57,9 +57,11 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-3">
-          <Button href="/contact" size="sm" icon={<ArrowRight className="size-4" />} className="hidden sm:inline-flex">
-            Request a Quote
-          </Button>
+          <div className="hidden md:block">
+            <Button href="/contact" size="sm" icon={<ArrowRight className="size-4" />}>
+              Request a Quote
+            </Button>
+          </div>
           <MobileMenu />
         </div>
       </div>

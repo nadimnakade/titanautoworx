@@ -1,3 +1,10 @@
+import { Hero } from "@/components/hero/Hero";
+
 export default function Home() {
-  return <div className="min-h-[60vh] pt-32" />;
+  return (
+    <>
+      <Hero />
+      <div id="services" className="min-h-[60vh]" />
+    </>
+  );
 }
