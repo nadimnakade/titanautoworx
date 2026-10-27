@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Titan Autoworx — Website
 
-## Getting Started
+Next.js 16 · Tailwind 4 · Framer Motion · GSAP · Lenis · Three.js (React Three Fiber)
 
-First, run the development server:
+## Run it
+
+Needs Node 20+ (22 recommended).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm start          # serve the build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tests:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm test                     # unit tests (Vitest)
+npx playwright install chromium   # first time only
+npm run build && npm run e2e # browser tests (Playwright)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Edit content
 
-## Learn More
+All text, services, projects, before/after items, phone, email and hours live in
+**`src/content/site.ts`**. Lines marked `// VERIFY` are placeholders copied from
+the mockup — check them before going live (phone, email, address, domain, stats).
 
-To learn more about Next.js, take a look at the following resources:
+## Add your photos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Drop files into `public/images/` with these names (JPG, PNG, WebP or AVIF).
+The site picks them up automatically on the next `npm run dev` / `npm run build`;
+until then a branded placeholder shows. Use landscape photos, ~2000px wide.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| File | Where it shows |
+|---|---|
+| `images/hero.jpg` | Home hero (3D sparks render on top of it) |
+| `images/services/mechanical.jpg` … `parts.jpg` | Service cards + Services page (`mechanical, bodywork, paint, classic, projects, towing, parts`) |
+| `images/work/<name>-before.jpg` / `-after.jpg` | Before/after sliders (`porsche-911, mustang, bmw-3, audi-rs3, c63, range-rover`) |
+| `images/projects/<name>.jpg` | Project cards (`vw-t6, defender-110, 911-gt3, mini-cooper, bmw-m3, land-cruiser`) |
+| `images/towing.jpg` | Towing band + Towing page |
+| `images/parts.jpg` | Parts page header |
+| `images/about.jpg` | About page |
 
-## Deploy on Vercel
+Different file name? Change the path in `src/content/site.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Hero
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`src/components/hero/` — a live 3D garage bay (reflective floor, neon bars,
+rising embers, bloom) with an original neon wireframe coupe being scanned on a
+turntable; camera follows the mouse. Text reveal and scroll parallax use GSAP.
+
+- No hero photo → full 3D scene. With `hero.jpg` → photo + embers overlay.
+- Reduced motion or no WebGL → lightweight CSS fallback, all content visible.
+- 3D code loads lazily and pauses when off-screen.
+
+## Quote form
+
+Validates name, phone and service, then opens WhatsApp with a pre-filled
+message (or email). No server needed. To use a backend later, replace the
+submit handler in `src/components/sections/QuoteForm.tsx`.
+
+## Deploy
+
+Works on Vercel (import the folder, no settings needed) or any Node host
+(`npm run build && npm start`). Set the real domain in `site.url` for SEO.

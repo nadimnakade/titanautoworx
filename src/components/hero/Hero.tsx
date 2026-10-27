@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -15,6 +15,10 @@ import { Magnetic } from "@/components/ui/MagneticButton";
 import { Icon } from "@/components/ui/Icon";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+let cachedMode: "fallback" | "3d" | undefined;
+const clientMode = () => (cachedMode ??= !prefersReducedMotion() && canUseWebGL() ? "3d" : "fallback");
+const noopSubscribe = () => () => {};
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -83,12 +87,9 @@ function SplitWords({ text, className }: { text: string; className?: string }) {
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
-  const [mode, setMode] = useState<"fallback" | "3d">("fallback");
+  // Client decides once whether to run 3D; server always renders the fallback.
+  const mode = useSyncExternalStore(noopSubscribe, clientMode, () => "fallback" as const);
   const photo = hasImage(site.hero.image);
-
-  useEffect(() => {
-    if (!prefersReducedMotion() && canUseWebGL()) setMode("3d");
-  }, []);
 
   useGSAP(
     () => {

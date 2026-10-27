@@ -1,5 +1,5 @@
 "use client";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { Bloom, EffectComposer, Vignette } from "@react-three/postprocessing";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -7,6 +7,18 @@ import * as THREE from "three";
 import { NeonCar } from "./NeonCar";
 
 const ORANGE = new THREE.Color("#ff5a1f");
+
+/** Small seeded PRNG so particle layout is pure and repeatable. */
+function seeded(seed: number) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 // Over-bright color so bloom picks up the light bars.
 const NEON = new THREE.Color(5, 1.6, 0.45);
 
@@ -17,12 +29,13 @@ function Sparks({ count = 700 }: { count?: number }) {
     const positions = new Float32Array(count * 3);
     const speeds = new Float32Array(count);
     const phases = new Float32Array(count);
+    const rand = seeded(count);
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 16;
-      positions[i * 3 + 1] = Math.random() * 6;
-      positions[i * 3 + 2] = -Math.random() * 14 + 3;
-      speeds[i] = 0.15 + Math.random() * 0.55;
-      phases[i] = Math.random() * Math.PI * 2;
+      positions[i * 3] = (rand() - 0.5) * 16;
+      positions[i * 3 + 1] = rand() * 6;
+      positions[i * 3 + 2] = -rand() * 14 + 3;
+      speeds[i] = 0.15 + rand() * 0.55;
+      phases[i] = rand() * Math.PI * 2;
     }
     return { positions, speeds, phases };
   }, [count]);
@@ -181,19 +194,19 @@ function Bay() {
 }
 
 function CameraRig() {
-  const { camera, pointer, size } = useThree();
-  const target = useMemo(() => new THREE.Vector3(1.0, 1.0, -3), []);
+  const target = useRef(new THREE.Vector3(1.0, 1.0, -3));
   useFrame((state, dt) => {
+    const { camera, pointer, size } = state;
     const k = 1 - Math.pow(0.02, dt);
     const t = state.clock.elapsedTime;
     // Narrow screens: frame the car (it sits under the copy, softened by gradients).
     const narrow = size.width < 768;
     const baseX = narrow ? 3.0 : 0;
-    target.x = narrow ? 3.3 : 1.0;
+    target.current.x = narrow ? 3.3 : 1.0;
     camera.position.x += (baseX + pointer.x * 0.9 + Math.sin(t * 0.15) * 0.25 - camera.position.x) * k;
     camera.position.y += ((narrow ? 2.2 : 1.35) + pointer.y * 0.35 - camera.position.y) * k;
     camera.position.z += ((narrow ? 10.5 : 7.5) - camera.position.z) * k;
-    camera.lookAt(target);
+    camera.lookAt(target.current);
   });
   return null;
 }

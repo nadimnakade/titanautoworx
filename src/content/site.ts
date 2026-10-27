@@ -128,6 +128,8 @@ const projects: Project[] = [
 
 export const site = {
   name: "Titan Autoworx",
+  // VERIFY: final domain
+  url: "https://titanautoworx.mt",
   tagline: "Built on passion. Driven by precision.",
   // VERIFY: contact details copied from mockup.
   phone: "+356 7774 2828",

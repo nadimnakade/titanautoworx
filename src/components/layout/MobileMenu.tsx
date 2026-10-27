@@ -13,8 +13,6 @@ export function MobileMenu() {
   const pathname = usePathname();
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => setOpen(false), [pathname]);
-
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -66,7 +64,7 @@ export function MobileMenu() {
                     transition={{ delay: 0.05 + i * 0.04, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="border-b border-border/60"
                   >
-                    <Link href={n.href} className={`block py-4 font-heading text-4xl ${pathname === n.href ? "text-accent" : "text-text"}`}>
+                    <Link href={n.href} onClick={() => setOpen(false)} className={`block py-4 font-heading text-4xl ${pathname === n.href ? "text-accent" : "text-text"}`}>
                       {n.label}
                     </Link>
                   </motion.li>
