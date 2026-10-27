@@ -52,7 +52,7 @@ export function ImageSlot({
           maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
         }}
       />
-      <div aria-hidden="true" className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted/60">
+      <div aria-hidden="true" className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted/85">
         <Camera className="size-6" strokeWidth={1.4} />
         {label && <span className="px-4 text-center font-heading text-sm tracking-wider">{label}</span>}
       </div>
