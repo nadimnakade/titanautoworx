@@ -3,7 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, MessageCircle, Phone, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { site } from "@/content/site";
 import { telUrl, whatsappUrl } from "@/lib/links";
 import { Logo } from "@/components/ui/Logo";
@@ -12,10 +13,43 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+
+  const close = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      // Keep focus inside the dialog.
+      const f = Array.from(dialogRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"));
+      if (!f.length) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      const active = document.activeElement;
+      const inside = dialogRef.current.contains(active);
+      if (e.shiftKey && (active === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
     document.addEventListener("keydown", onKey);
     document.documentElement.style.overflow = "hidden";
     closeRef.current?.focus();
@@ -28,6 +62,7 @@ export function MobileMenu() {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         aria-label="Open menu"
         aria-expanded={open}
@@ -36,9 +71,12 @@ export function MobileMenu() {
       >
         <Menu className="size-5" />
       </button>
+      {mounted &&
+        createPortal(
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
@@ -50,7 +88,7 @@ export function MobileMenu() {
           >
             <div className="container-x flex h-[72px] items-center justify-between">
               <Logo />
-              <button ref={closeRef} type="button" aria-label="Close menu" onClick={() => setOpen(false)} className="grid size-11 place-items-center rounded-md border border-border">
+              <button ref={closeRef} type="button" aria-label="Close menu" onClick={close} className="grid size-11 place-items-center rounded-md border border-border">
                 <X className="size-5" />
               </button>
             </div>
@@ -81,7 +119,9 @@ export function MobileMenu() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+          document.body,
+        )}
     </>
   );
 }

@@ -91,7 +91,7 @@ function Sparks({ count = 700 }: { count?: number }) {
 }
 
 /** Garage bay: wet reflective floor, neon ceiling strips, pillar light bars, display platform. */
-function Bay() {
+function Bay({ low }: { low: boolean }) {
   const ring = useRef<THREE.Mesh>(null);
   const disc = useRef<THREE.Group>(null);
   useFrame((_, dt) => {
@@ -114,8 +114,8 @@ function Bay() {
       <mesh rotation-x={-Math.PI / 2} position-y={0}>
         <planeGeometry args={[60, 60]} />
         <MeshReflectorMaterial
-          blur={[400, 90]}
-          resolution={1024}
+          blur={low ? [200, 50] : [400, 90]}
+          resolution={low ? 384 : 1024}
           mixBlur={1}
           mixStrength={55}
           roughness={0.9}
@@ -218,6 +218,8 @@ function CameraRig() {
 export default function HeroScene({ overlay = false }: { overlay?: boolean }) {
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
+  // Phones / low-core devices get a lighter render budget.
+  const [low] = useState(() => window.innerWidth < 768 || (navigator.hardwareConcurrency ?? 8) <= 4);
 
   useEffect(() => {
     const el = wrap.current;
@@ -231,14 +233,14 @@ export default function HeroScene({ overlay = false }: { overlay?: boolean }) {
     <div ref={wrap} className="absolute inset-0" aria-hidden="true">
       <Canvas
         frameloop={visible ? "always" : "never"}
-        dpr={[1, 1.75]}
+        dpr={low ? [1, 1.25] : [1, 1.75]}
         gl={{ antialias: false, alpha: overlay, powerPreference: "high-performance" }}
         camera={{ position: [0, 1.35, 7.5], fov: 38, near: 0.1, far: 60 }}
       >
         {!overlay && <color attach="background" args={["#0a0a0b"]} />}
         {!overlay && <fog attach="fog" args={["#0a0a0b", 8, 26]} />}
-        {!overlay && <Bay />}
-        <Sparks count={overlay ? 380 : 700} />
+        {!overlay && <Bay low={low} />}
+        <Sparks count={overlay || low ? 350 : 700} />
         <CameraRig />
         <EffectComposer multisampling={0} enableNormalPass={false}>
           <Bloom mipmapBlur luminanceThreshold={1} intensity={1.15} radius={0.75} />

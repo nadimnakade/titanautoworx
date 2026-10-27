@@ -18,7 +18,7 @@ export function Footer() {
             Malta&apos;s trusted automotive specialists. Repairs, restorations, modifications and towing. Driven by passion. Built on experience.
           </p>
           <ul className="mt-6 flex gap-2">
-            {site.socials.map((s) => (
+            {site.socials.filter((s) => s.href).map((s) => (
               <li key={s.label}>
                 <a href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer" className="grid size-10 place-items-center rounded-md border border-border text-muted transition-colors hover:border-accent hover:text-accent">
                   <SocialIcon label={s.label} />

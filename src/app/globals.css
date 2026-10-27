@@ -114,3 +114,20 @@
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
+
+/* Reduced motion: reveals and hero intro are shown immediately. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Hero intro starts hidden only when JS + motion are available (class set
+   by an inline script before paint), so there is no flash of the headline. */
+html.motion-ok [data-word] {
+  transform: translateY(115%) rotate(5deg);
+}
+html.motion-ok :is([data-hero-eyebrow], [data-hero-body], [data-hero-cta] > *, [data-testid="trust-item"]) {
+  opacity: 0;
+}

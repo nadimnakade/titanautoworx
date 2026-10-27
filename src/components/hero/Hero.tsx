@@ -28,13 +28,15 @@ const rnd = (i: number, s: number) => {
   return x - Math.floor(x);
 };
 
-function Fallback() {
+function Fallback({ photo }: { photo: boolean }) {
   return (
     <div data-testid="hero-fallback" aria-hidden="true" className="absolute inset-0 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
-          background:
+          background: photo
+            ? "radial-gradient(40% 30% at 70% 95%, rgb(255 90 31 / 0.25), transparent 70%)"
+            :
             "radial-gradient(60% 55% at 70% 62%, rgb(255 90 31 / 0.22), transparent 70%), radial-gradient(40% 30% at 70% 95%, rgb(255 90 31 / 0.35), transparent 70%), linear-gradient(180deg, #0a0a0b 0%, #111113 55%, #0a0a0b 100%)",
         }}
       />
@@ -94,12 +96,19 @@ export function Hero() {
   useGSAP(
     () => {
       if (prefersReducedMotion()) return;
-      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-      tl.from("[data-hero-eyebrow]", { y: 20, opacity: 0, duration: 0.8 }, 0.15)
-        .from("[data-word]", { yPercent: 115, rotate: 5, duration: 1.1, stagger: 0.06 }, 0.2)
-        .from("[data-hero-body]", { y: 24, opacity: 0, duration: 0.9 }, 0.7)
-        .from("[data-hero-cta] > *", { y: 20, opacity: 0, duration: 0.8, stagger: 0.1 }, 0.85)
-        .from("[data-testid=trust-item]", { y: 24, opacity: 0, duration: 0.7, stagger: 0.07 }, 1.0)
+      // Start states come from CSS (html.motion-ok) so nothing flashes before hydration.
+      const fade = (y: number) => [{ y, opacity: 0 }, { y: 0, opacity: 1 }] as const;
+      const tl = gsap.timeline({
+        defaults: { ease: "expo.out", duration: 0.8 },
+        onStart: () => {
+          document.documentElement.dataset.heroReady = "1";
+        },
+      });
+      tl.fromTo("[data-hero-eyebrow]", ...fade(20), 0.15)
+        .fromTo("[data-word]", { yPercent: 115, rotate: 5 }, { yPercent: 0, y: 0, rotate: 0, duration: 1.1, stagger: 0.06 }, 0.2)
+        .fromTo("[data-hero-body]", fade(24)[0], { ...fade(24)[1], duration: 0.9 }, 0.7)
+        .fromTo("[data-hero-cta] > *", fade(20)[0], { ...fade(20)[1], duration: 0.8, stagger: 0.1 }, 0.85)
+        .fromTo("[data-testid=trust-item]", fade(24)[0], { ...fade(24)[1], duration: 0.7, stagger: 0.07 }, 1.0)
         .from("[data-hero-sweep]", { xPercent: -120, duration: 1.8, ease: "power2.inOut" }, 0.3);
 
       gsap.to("[data-hero-sweep]", {
@@ -137,7 +146,7 @@ export function Hero() {
         {photo && (
           <Image src={site.hero.image} alt="" fill priority sizes="100vw" className="object-cover object-[70%_center] opacity-90" />
         )}
-        {mode === "3d" ? <HeroScene overlay={photo} /> : <Fallback />}
+        {mode === "3d" ? <HeroScene overlay={photo} /> : <Fallback photo={photo} />}
         {/* Readability gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/75 to-transparent md:via-bg/45" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-bg to-transparent" />

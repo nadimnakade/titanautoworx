@@ -24,7 +24,7 @@ export function BeforeAfterCarousel() {
             <h2 className="font-heading text-[clamp(2.1rem,5vw,3.6rem)]">Before &amp; after transformations</h2>
             <p className="mt-3 text-muted md:text-lg">Real cars. Real results. Drag to see the difference expert care makes.</p>
           </div>
-          <div className="hidden shrink-0 gap-2 md:flex">
+          <div className="flex shrink-0 gap-2">
             <button type="button" aria-label="Previous transformations" className={btn} onClick={() => scroll(-1)}>
               <ChevronLeft className="size-5" />
             </button>

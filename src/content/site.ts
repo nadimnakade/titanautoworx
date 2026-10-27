@@ -142,10 +142,11 @@ export const site = {
     { days: "Saturday", time: "08:00 – 12:30" },
     { days: "Towing", time: "24/7" },
   ],
+  // VERIFY: add real profile URLs — empty ones are hidden.
   socials: [
-    { label: "Facebook", href: "https://facebook.com/" },
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "YouTube", href: "https://youtube.com/" },
+    { label: "Facebook", href: "" },
+    { label: "Instagram", href: "" },
+    { label: "YouTube", href: "" },
   ],
   nav: [
     { label: "Home", href: "/" },
