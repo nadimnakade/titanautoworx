@@ -11,7 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="scene.css">
   <link rel="stylesheet" href="style.css">
-  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
 <body>
   <header class="site-header" data-header>
@@ -45,7 +44,7 @@
 
     <section class="car-story" id="disciplines" data-car-story aria-label="Titan automotive services showcased around a rotating car">
       <div class="car-stage">
-        <canvas id="car-canvas" aria-label="Rotating performance car"></canvas>
+        <video id="showcase-video" aria-label="Performance car rotating through workshop views" muted playsinline preload="metadata" poster="assets/showcase-poster.webp"></video>
         <div class="car-vignette" aria-hidden="true"></div>
         <div class="car-loader" data-car-loader><i></i><span>Preparing vehicle</span></div>
         <div class="story-progress" aria-hidden="true"><span>01</span><i><b></b></i><span>07</span></div>
@@ -116,6 +115,6 @@
   </main>
   <script src="scene.js"></script>
   <script src="site.js"></script>
-  <script type="module" src="car-story.js"></script>
+  <script src="car-story.js"></script>
 </body>
 </html>
