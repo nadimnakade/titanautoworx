@@ -1,5 +1,4 @@
-import { Hero } from "@/components/hero/Hero";
-import { Marquee } from "@/components/sections/Marquee";
+import { PrecisionShowcase } from "@/components/sections/PrecisionShowcase";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { BeforeAfterCarousel } from "@/components/sections/BeforeAfterCarousel";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
@@ -9,8 +8,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Marquee />
+      <PrecisionShowcase />
       <ServicesGrid />
       <BeforeAfterCarousel />
       <FeaturedProjects />

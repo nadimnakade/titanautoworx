@@ -7,8 +7,8 @@ export function Logo({ className = "", href = "/" }: { className?: string; href?
       <svg viewBox="0 0 48 48" className="h-9 w-9 shrink-0" aria-hidden="true">
         <defs>
           <linearGradient id="lg-helm" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#ff7a45" />
-            <stop offset="1" stopColor="#d9400c" />
+            <stop offset="0" stopColor="#ff2525" />
+            <stop offset="1" stopColor="#b80000" />
           </linearGradient>
         </defs>
         {/* crest */}

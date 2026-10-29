@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { NeonCar } from "./NeonCar";
 
-const ORANGE = new THREE.Color("#ff5a1f");
+const ORANGE = new THREE.Color("#e10606");
 
 /** Small seeded PRNG so particle layout is pure and repeatable. */
 function seeded(seed: number) {
@@ -20,7 +20,7 @@ function seeded(seed: number) {
   };
 }
 // Over-bright color so bloom picks up the light bars.
-const NEON = new THREE.Color(5, 1.6, 0.45);
+const NEON = new THREE.Color(5, 0.18, 0.12);
 
 /** Embers rising through the bay. Positions updated on the CPU (cheap at ~700 points). */
 function Sparks({ count = 700 }: { count?: number }) {
@@ -83,7 +83,7 @@ function Sparks({ count = 700 }: { count?: number }) {
         transparent
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        color={new THREE.Color(2.2, 0.9, 0.4)}
+        color={new THREE.Color(2.4, 0.12, 0.08)}
         toneMapped={false}
       />
     </points>

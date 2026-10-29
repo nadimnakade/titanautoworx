@@ -5,7 +5,7 @@ import { ServiceCard, ServiceRow } from "./ServiceCard";
 
 export function ServicesGrid() {
   return (
-    <section id="services" className="relative scroll-mt-20 py-20 md:py-28">
+    <section id="services" className="relative scroll-mt-20 border-t border-border/70 py-14 md:py-18">
       <div className="container-x">
         <SectionHeading
           eyebrow="Our services"
@@ -14,7 +14,7 @@ export function ServicesGrid() {
           action={{ label: "View All Services", href: "/services" }}
         />
         {/* Desktop/tablet: 4 + 3 card grid */}
-        <div className="hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-12">
+        <div className="hidden gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-12">
           {site.services.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 4) * 0.08} className={i < 4 ? "lg:col-span-3" : "lg:col-span-4"}>
               <ServiceCard s={s} className="h-full" />

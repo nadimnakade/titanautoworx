@@ -15,14 +15,14 @@ export function BeforeAfterCarousel() {
   const btn =
     "grid size-11 place-items-center rounded-full border border-border text-text transition-colors hover:border-accent hover:text-accent";
   return (
-    <section className="relative overflow-hidden border-y border-border bg-surface/40 py-20 md:py-28">
+    <section className="relative overflow-hidden border-y border-border bg-surface/35 py-14 md:py-18">
       <div aria-hidden="true" className="absolute -left-40 top-1/3 size-[520px] rounded-full bg-accent/10 blur-[120px]" />
       <div className="container-x relative">
-        <Reveal className="mb-8 flex items-end justify-between gap-6 md:mb-10">
+        <Reveal className="mb-6 flex items-end justify-between gap-6 md:mb-7">
           <div>
             <p className="eyebrow mb-3">Real results</p>
             <h2 className="font-heading text-[clamp(2.1rem,5vw,3.6rem)]">Before &amp; after transformations</h2>
-            <p className="mt-3 text-muted md:text-lg">Real cars. Real results. Drag to see the difference expert care makes.</p>
+            <p className="mt-2 text-sm text-muted md:text-base">Real cars. Real results. Drag to see the difference expert care makes.</p>
           </div>
           <div className="flex shrink-0 gap-2">
             <button type="button" aria-label="Previous transformations" className={btn} onClick={() => scroll(-1)}>
@@ -33,7 +33,7 @@ export function BeforeAfterCarousel() {
             </button>
           </div>
         </Reveal>
-        <div ref={track} className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none]">
+        <div ref={track} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none]">
           {site.work.map((w) => (
             <article key={w.title + w.subtitle} className="w-[86%] shrink-0 snap-start sm:w-[calc(50%-10px)]">
               <p className="eyebrow mb-1.5 text-[0.72rem]">{w.category}</p>

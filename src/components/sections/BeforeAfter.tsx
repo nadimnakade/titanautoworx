@@ -39,7 +39,7 @@ export function BeforeAfter({
       aria-valuemax={100}
       aria-valuenow={pos}
       aria-valuetext={`${pos}% before`}
-      className={`group relative select-none overflow-hidden rounded-lg touch-pan-y ${className}`}
+      className={`group relative select-none overflow-hidden rounded-[2px] touch-pan-y ${className}`}
       onPointerDown={(e) => {
         dragging.current = true;
         (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
@@ -62,13 +62,15 @@ export function BeforeAfter({
         }
       }}
     >
-      <ImageSlot src={after} alt={`${alt} after`} label="After photo" tone="after" className="absolute inset-0" />
+      <div className="absolute inset-0">
+        <ImageSlot src={after} alt={`${alt} after`} label="After photo" tone="after" className="size-full" />
+      </div>
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-        <ImageSlot src={before} alt={`${alt} before`} label="Before photo" tone="before" className="absolute inset-0 grayscale-[0.4]" />
+        <ImageSlot src={before} alt={`${alt} before`} label="Before photo" tone="before" className="size-full grayscale-[0.4]" />
       </div>
       <span className="absolute bottom-3 left-3 rounded bg-bg/80 px-2 py-1 font-heading text-xs tracking-widest">{labelBefore}</span>
       <span className="absolute bottom-3 right-3 rounded bg-accent px-2 py-1 font-heading text-xs tracking-widest text-bg">{labelAfter}</span>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white/90 shadow-[0_0_20px_rgb(255_90_31/0.8)]" style={{ left: `${pos}%` }}>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white/90 shadow-[0_0_20px_rgb(225_6_6/0.8)]" style={{ left: `${pos}%` }}>
         <span className="absolute top-1/2 left-1/2 grid size-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-white bg-bg/70 backdrop-blur transition-transform group-active:scale-110 group-focus-visible:ring-2 group-focus-visible:ring-accent">
           <ChevronsLeftRight className="size-4" />
         </span>

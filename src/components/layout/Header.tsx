@@ -25,14 +25,14 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-300 ${
-        scrolled ? "border-b border-border/70 bg-bg/85 backdrop-blur-xl" : "border-b border-transparent bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-500 ${
+        scrolled ? "border-b border-white/10 bg-black/70 backdrop-blur-2xl" : "border-b border-transparent bg-gradient-to-b from-black/60 to-transparent"
       }`}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-bg">
         Skip to content
       </a>
-      <div className="container-x flex h-[72px] items-center justify-between gap-6">
+      <div className="container-x flex h-[4.5rem] items-center justify-between gap-6">
         <Logo />
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
@@ -43,7 +43,7 @@ export function Header() {
                   <Link
                     href={n.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative px-3 py-2 text-[0.92rem] font-medium transition-colors ${active ? "text-text" : "text-muted hover:text-text"}`}
+                    className={`relative px-3 py-2 text-[0.78rem] font-medium tracking-wide transition-colors ${active ? "text-text" : "text-white/55 hover:text-text"}`}
                   >
                     {n.label}
                     <span

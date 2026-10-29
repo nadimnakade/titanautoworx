@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090a09">
+  <meta name="description" content="Titan Autoworx — bodywork, paint, mechanical care, restorations and specialist automotive projects in Malta.">
+  <title>Titan Autoworx — Return Every Line</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="scene.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Titan Autoworx home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2c8 2 14 6 17 13-6-3-11-4-17-4S13 12 7 15C10 8 16 4 24 2Z" fill="#e10606"/><path d="M10 18c4-3 9-4.5 14-4.5S34 15 38 18v12c0 6-4 11-9 14l-1-11h-8l-1 11c-5-3-9-8-9-14V18Z" fill="#f0eee7"/><path d="M14 22h20v5h-7.5v8h-5v-8H14z" fill="#090a09"/></svg>
+      <span><b>TITAN</b><em>AUTOWORX</em></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#disciplines">Services</a><a href="#proof">Our work</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#contact">Request an assessment <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
+  </header>
+
+  <main id="top">
+    <section class="hero" data-k-hero data-k-span="6" aria-label="A damaged performance car is restored as you scroll">
+      <div class="k-stage">
+        <video data-k-scrub data-src="assets/hero.mp4" data-src-mobile="assets/hero-m.mp4" data-poster="assets/hero-poster.webp" data-poster-mobile="assets/hero-m-poster.webp" data-bytes="9116890" muted playsinline></video>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="inspection-ui" aria-hidden="true"><span class="scan-line"></span><span class="scan-code">TA / PANEL SCAN</span><span class="coordinates">35.8989° N<br>14.5146° E</span></div>
+        <div class="k-ring" aria-hidden="true"></div>
+        <div class="k-band band-opening" data-k-band="0 0.22">
+          <div class="hero-copy"><span class="eyebrow">Collision repair / Malta</span><h1>DAMAGED<br>DOESN'T MEAN<br><em>FINISHED.</em></h1><p>Scroll to begin the repair</p></div>
+        </div>
+        <div class="k-band band-measured" data-k-band="0.27 0.48"><div class="hero-copy"><span class="index">01 — STRUCTURE</span><h2>MEASURED.<br><em>CORRECTED.</em></h2><p>Damage is mapped before metal is moved.</p></div></div>
+        <div class="k-band band-colour" data-k-band="0.53 0.74"><div class="hero-copy"><span class="index">02 — SURFACE</span><h2>COLOUR,<br><em>BUILT IN LAYERS.</em></h2><p>Shape. Primer. Paint. Reflection.</p></div></div>
+        <div class="k-band band-final" data-k-band="0.79 1"><div class="hero-copy"><span class="eyebrow">Final inspection</span><h2>RETURN<br><em>EVERY LINE.</em></h2><p>Bodywork, paint and mechanical care measured to the last reflection.</p><a class="button" href="#contact">Request an assessment <span>↗</span></a></div></div>
+        <div class="hero-rail" aria-hidden="true"><b>RESTORATION PROGRESS</b><span><i></i></span><em>SCROLL</em></div>
+      </div>
+    </section>
+
+    <section class="car-story" id="disciplines" data-car-story aria-label="Titan automotive services showcased around a rotating car">
+      <div class="car-stage">
+        <canvas id="car-canvas" aria-label="Rotating performance car"></canvas>
+        <div class="car-vignette" aria-hidden="true"></div>
+        <div class="car-loader" data-car-loader><i></i><span>Preparing vehicle</span></div>
+        <div class="story-progress" aria-hidden="true"><span>01</span><i><b></b></i><span>07</span></div>
+        <p class="drag-note">Scroll to orbit / move to inspect</p>
+      </div>
+      <div class="story-chapters">
+        <article class="story-panel align-left" data-story-panel>
+          <span class="story-index">01 / The complete workshop</span><h2>ONE CAR.<br><em>EVERY SYSTEM.</em></h2><p>Keep scrolling. The vehicle stays with you while each Titan discipline comes into view.</p><ul><li>Mechanical</li><li>Bodywork</li><li>Paint</li><li>Restoration</li></ul>
+        </article>
+        <article class="story-panel align-right" data-story-panel>
+          <span class="story-index">02 / Mechanical repairs</span><h2>CONFIDENCE<br><em>UNDER LOAD.</em></h2><p>Diagnostics, servicing and repairs built around dependable road performance.</p><div class="story-specs"><span><b>01</b> Engine</span><span><b>02</b> Brakes</span><span><b>03</b> Suspension</span></div>
+        </article>
+        <article class="story-panel align-left" data-story-panel>
+          <span class="story-index">03 / Bodywork</span><h2>GEOMETRY<br><em>BEFORE GLOSS.</em></h2><p>Collision damage mapped, corrected and aligned before the surface is ever painted.</p><div class="measure-rule"><i></i><b>± 0.5 mm</b></div>
+        </article>
+        <article class="story-panel align-right" data-story-panel>
+          <span class="story-index">04 / Spray & refinishing</span><h2>COLOUR WITH<br><em>NO EDGE.</em></h2><p>Controlled preparation, colour matching and clear coat engineered for an uninterrupted reflection.</p><div class="paint-code"><i></i><span>TITAN RED<br>#E10606</span></div>
+        </article>
+        <article class="story-panel align-left" data-story-panel>
+          <span class="story-index">05 / Restoration</span><h2>CHARACTER,<br><em>RETURNED.</em></h2><p>Classic and specialist vehicles rebuilt with respect for what made them worth saving.</p><ul><li>Preserve</li><li>Rebuild</li><li>Refine</li></ul>
+        </article>
+        <article class="story-panel align-right" data-story-panel>
+          <span class="story-index">06 / Modifications</span><h2>BUILT BEYOND<br><em>STANDARD.</em></h2><p>Performance upgrades, custom fabrication and complete automotive projects with a clear purpose.</p><div class="story-specs"><span><b>01</b> Performance</span><span><b>02</b> Custom</span><span><b>03</b> Expedition</span></div>
+        </article>
+        <article class="story-panel align-left" data-story-panel>
+          <span class="story-index">07 / Parts & recovery</span><h2>FROM ROADSIDE<br><em>TO ROAD-READY.</em></h2><p>Vehicle recovery and the right components to carry the repair from first call to final inspection.</p><div class="dual-actions"><a href="#recovery">Recovery</a><a href="#parts">Parts</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="proof section" id="proof">
+      <div class="proof-copy"><div class="section-kicker"><span>02</span> Proof under the light</div><h2>THE LINE<br><em>DOESN'T LIE.</em></h2><p>Drag the inspection line. The same car, the same angle—before correction and after final polish.</p><div class="proof-notes"><span><b>BODY</b> Panel geometry restored</span><span><b>PAINT</b> Reflection runs uninterrupted</span></div></div>
+      <div class="compare" data-compare style="--split:50%">
+        <img src="assets/repair-before.webp" alt="Damaged red performance car before repair" loading="lazy" width="1600" height="900">
+        <div class="after"><img src="assets/repair-after.webp" alt="Red performance car after repair" loading="lazy" width="1600" height="900"></div>
+        <div class="compare-line"><button type="button" aria-label="Drag to compare before and after">↔</button></div>
+        <span class="compare-label before-label">Before</span><span class="compare-label after-label">After</span>
+      </div>
+    </section>
+
+    <section class="projects section" id="projects">
+      <div class="section-head"><div><div class="section-kicker"><span>03</span> Built for the unusual</div><h2>PROJECTS WITH<br><em>A POINT OF VIEW.</em></h2></div><p>Restorations, custom builds and specialist vehicles—each one treated as its own engineering problem.</p></div>
+      <div class="project-grid">
+        <article class="project project-a"><img src="assets/project-craft.webp" alt="Performance engine and automotive craftsmanship" loading="lazy" width="1400" height="656"><div><span>Performance / Mechanical</span><h3>Built around the drive</h3><p>Where reliability, response and finish have to work as one.</p></div></article>
+        <article class="project project-b"><img src="assets/project-expedition.webp" alt="Custom off-road expedition vehicle" loading="lazy" width="1400" height="934"><div><span>Custom / Expedition</span><h3>Prepared beyond the road</h3><p>Functional modifications designed around the journey.</p></div></article>
+      </div>
+    </section>
+
+    <section class="recovery section split-feature" id="recovery">
+      <div class="feature-number">04</div><div><div class="section-kicker"><span>04</span> Vehicle recovery</div><h2>WHEN THE ROAD<br><em>STOPS.</em></h2><p>Recovery is part of the repair journey. Start the conversation from the roadside and bring the vehicle directly into the Titan workflow.</p><a class="outline-button" href="#contact">Request recovery <span>↗</span></a></div><div class="feature-orbit" aria-hidden="true"><span>24</span><b>/</b><span>7</span><i>Response</i></div>
+    </section>
+
+    <section class="parts section split-feature" id="parts">
+      <div class="feature-number">05</div><div><div class="section-kicker"><span>05</span> Automotive parts</div><h2>THE RIGHT PART.<br><em>THE FIRST TIME.</em></h2><p>Components selected around fit, function and the intended use of the vehicle—not simply what appears in a catalogue.</p><a class="outline-button" href="#contact">Enquire about a part <span>↗</span></a></div><div class="part-rings" aria-hidden="true"><i></i><i></i><i></i><b>T / A</b></div>
+    </section>
+
+    <section class="trust section" id="about">
+      <div class="section-head"><div><div class="section-kicker"><span>06</span> Why Titan</div><h2>BUILT ON PROCESS.<br><em>PROVEN IN THE FINISH.</em></h2></div><p>No invented awards. No vague promises. Just a visible method, a clear assessment and work you can inspect under the light.</p></div>
+      <div class="trust-grid"><article><b>01</b><h3>Assess</h3><p>Understand the damage, objective and constraints.</p></article><article><b>02</b><h3>Plan</h3><p>Agree the repair path before major work begins.</p></article><article><b>03</b><h3>Build</h3><p>Complete each discipline against the same standard.</p></article><article><b>04</b><h3>Inspect</h3><p>Review alignment, function and finish before handover.</p></article></div>
+    </section>
+
+    <section class="contact section" id="contact">
+      <div class="contact-top"><div class="section-kicker"><span>04</span> Start with the damage</div><span>Malta / By assessment</span></div>
+      <h2>RETURN YOUR CAR<br><em>TO THE ROAD.</em></h2>
+      <div class="contact-bottom"><p>Tell us what happened, what the car needs, or what you want to build. We’ll start with an honest assessment.</p><a class="button button-large" href="mailto:info@titanautoworx.com">Request an assessment <span>↗</span></a></div>
+      <footer><a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 2c8 2 14 6 17 13-6-3-11-4-17-4S13 12 7 15C10 8 16 4 24 2Z" fill="#e10606"/><path d="M10 18c4-3 9-4.5 14-4.5S34 15 38 18v12c0 6-4 11-9 14l-1-11h-8l-1 11c-5-3-9-8-9-14V18Z" fill="#f0eee7"/><path d="M14 22h20v5h-7.5v8h-5v-8H14z" fill="#090a09"/></svg><span><b>TITAN</b><em>AUTOWORX</em></span></a><p>Mechanical · Bodywork · Spray · Modifications · Restorations · Parts</p><span>© 2026 Titan Autoworx</span></footer>
+    </section>
+  </main>
+  <script src="scene.js"></script>
+  <script src="site.js"></script>
+  <script type="module" src="car-story.js"></script>
+</body>
+</html>

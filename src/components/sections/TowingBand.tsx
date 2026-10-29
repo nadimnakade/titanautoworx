@@ -9,14 +9,14 @@ import { Reveal } from "@/components/ui/Reveal";
 export function TowingBand({ compact = false }: { compact?: boolean }) {
   const t = site.towing;
   return (
-    <section className={compact ? "py-10" : "py-12 md:py-16"}>
+    <section className={compact ? "py-8" : "py-10 md:py-12"}>
       <div className="container-x">
         <Reveal>
-          <div className="relative overflow-hidden rounded-xl border border-border bg-surface">
+          <div className="relative overflow-hidden rounded-[2px] border border-border bg-surface">
             <ImageSlot src={t.image} alt="Titan Autoworx recovery truck" label="Recovery truck photo" className="absolute inset-0 opacity-70" />
             <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/30" />
             <div aria-hidden="true" className="absolute -right-24 -top-24 size-80 rounded-full bg-accent/20 blur-[90px]" />
-            <div className="relative grid gap-8 p-7 md:p-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+            <div className="relative grid gap-7 p-6 md:p-9 lg:grid-cols-[1.3fr_1fr] lg:items-center">
               <div>
                 <p className="eyebrow mb-3">24/7 across Malta</p>
                 <h2 className="font-heading text-[clamp(1.9rem,4vw,3rem)]">{t.title}</h2>

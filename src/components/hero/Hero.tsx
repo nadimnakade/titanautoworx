@@ -35,9 +35,9 @@ function Fallback({ photo }: { photo: boolean }) {
         className="absolute inset-0"
         style={{
           background: photo
-            ? "radial-gradient(40% 30% at 70% 95%, rgb(255 90 31 / 0.25), transparent 70%)"
+            ? "radial-gradient(40% 30% at 70% 95%, rgb(225 6 6 / 0.25), transparent 70%)"
             :
-            "radial-gradient(60% 55% at 70% 62%, rgb(255 90 31 / 0.22), transparent 70%), radial-gradient(40% 30% at 70% 95%, rgb(255 90 31 / 0.35), transparent 70%), linear-gradient(180deg, #0a0a0b 0%, #111113 55%, #0a0a0b 100%)",
+            "radial-gradient(60% 55% at 70% 62%, rgb(225 6 6 / 0.22), transparent 70%), radial-gradient(40% 30% at 70% 95%, rgb(225 6 6 / 0.35), transparent 70%), linear-gradient(180deg, #070708 0%, #111113 55%, #070708 100%)",
         }}
       />
       {/* perspective floor lines */}
@@ -45,7 +45,7 @@ function Fallback({ photo }: { photo: boolean }) {
         className="absolute inset-x-0 bottom-0 h-1/2 opacity-40"
         style={{
           backgroundImage:
-            "linear-gradient(rgb(255 90 31 / 0.25) 1px, transparent 1px), linear-gradient(90deg, rgb(255 90 31 / 0.18) 1px, transparent 1px)",
+            "linear-gradient(rgb(225 6 6 / 0.25) 1px, transparent 1px), linear-gradient(90deg, rgb(225 6 6 / 0.18) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           transform: "perspective(500px) rotateX(62deg)",
           transformOrigin: "bottom",
@@ -119,14 +119,14 @@ export function Hero() {
       });
 
       gsap.to("[data-hero-content]", {
-        yPercent: -18,
+        yPercent: -16,
         opacity: 0,
         ease: "none",
         scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
       });
       gsap.to("[data-hero-bg]", {
-        scale: 1.08,
-        opacity: 0.35,
+        scale: 1.06,
+        opacity: 0.45,
         ease: "none",
         scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
       });
@@ -144,7 +144,7 @@ export function Hero() {
       {/* Background layers */}
       <div data-hero-bg className="absolute inset-0 -z-10 origin-center">
         {photo && (
-          <Image src={site.hero.image} alt="" fill priority sizes="100vw" className="object-cover object-[70%_center] opacity-90" />
+          <Image src={site.hero.image} alt="" fill priority sizes="100vw" className="scale-[1.015] object-cover object-[68%_center] opacity-90" />
         )}
         {mode === "3d" ? <HeroScene overlay={photo} /> : <Fallback photo={photo} />}
         {/* Readability gradients */}
@@ -159,7 +159,7 @@ export function Hero() {
           data-hero-sweep
           className="absolute -inset-y-20 left-0 w-[45%] -skew-x-12 mix-blend-screen"
           style={{
-            background: "linear-gradient(90deg, transparent, rgb(255 140 80 / 0.10) 40%, rgb(255 200 160 / 0.16) 50%, rgb(255 140 80 / 0.10) 60%, transparent)",
+            background: "linear-gradient(90deg, transparent, rgb(225 6 6 / 0.08) 40%, rgb(255 255 255 / 0.15) 50%, rgb(225 6 6 / 0.08) 60%, transparent)",
             transform: "translateX(-120%)",
           }}
         />
@@ -170,9 +170,9 @@ export function Hero() {
           <span aria-hidden="true" className="h-px w-10 bg-accent" />
           {site.hero.eyebrow}
         </p>
-        <h1 id="hero-title" className="font-heading text-[clamp(2.9rem,6.6vw,6.4rem)] leading-[0.9]">
+        <h1 id="hero-title" className="max-w-5xl font-heading text-[clamp(3.15rem,7.4vw,7.25rem)] leading-[0.82] tracking-[-0.035em]">
           <SplitWords text={site.hero.line1} />
-          <SplitWords text={site.hero.line2} className="text-accent [filter:drop-shadow(0_0_28px_rgb(255_90_31/0.35))]" />
+          <SplitWords text={site.hero.line2} className="text-accent [filter:drop-shadow(0_0_28px_rgb(225_6_6/0.35))]" />
         </h1>
         <p data-hero-body className="mt-6 max-w-xl text-base leading-relaxed text-text/80 md:text-lg">
           {site.hero.body}
@@ -214,12 +214,16 @@ export function Hero() {
       </div>
 
       <a
-        href="#services"
-        aria-label="Scroll to services"
-        className="absolute bottom-32 right-6 hidden size-11 place-items-center rounded-full border border-border text-muted transition-colors hover:border-accent hover:text-accent lg:grid"
+        href="#precision-showcase"
+        aria-label="Jump to the scroll-controlled car transformation"
+        className="absolute bottom-32 right-5 flex items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/65 transition-colors hover:text-white md:right-6"
       >
-        <ChevronDown className="size-5 animate-bounce" />
+        <span className="hidden sm:inline">Scroll to transform</span>
+        <span className="grid size-11 place-items-center rounded-full border border-white/25 bg-bg/35 backdrop-blur-md">
+          <ChevronDown className="size-5 animate-bounce text-accent" />
+        </span>
       </a>
+
     </section>
   );
 }

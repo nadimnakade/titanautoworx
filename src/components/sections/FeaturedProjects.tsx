@@ -6,7 +6,7 @@ import { ProjectCard } from "./ProjectCard";
 export function FeaturedProjects() {
   const featured = [0, 1, 2, 3].map((i) => site.projects[i]);
   return (
-    <section className="py-20 md:py-28">
+    <section className="border-b border-border/70 py-14 md:py-18">
       <div className="container-x">
         <SectionHeading
           eyebrow="Builds & restorations"
@@ -14,7 +14,7 @@ export function FeaturedProjects() {
           subtitle="Custom builds, restorations and unique vehicles from our workshop."
           action={{ label: "View All Projects", href: "/projects" }}
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
               <ProjectCard p={p} testId="featured-project" />

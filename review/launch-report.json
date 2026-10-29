@@ -1,0 +1,44 @@
+{
+  "target": "site",
+  "seoOnly": false,
+  "scores": {
+    "mobile": {
+      "cats": {
+        "performance": 92,
+        "accessibility": 95,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "lcp": "3.2 s",
+      "cls": "0",
+      "fixes": [
+        "Browser errors were logged to the console",
+        "Background and foreground colors do not have a sufficient contrast ratio.",
+        "Elements with visible text labels do not have matching accessible names.",
+        "Forced reflow",
+        "Network dependency tree"
+      ]
+    },
+    "desktop": {
+      "cats": {
+        "performance": 99,
+        "accessibility": 95,
+        "best-practices": 96,
+        "seo": 100
+      },
+      "lcp": "0.8 s",
+      "cls": "0.001",
+      "fixes": [
+        "Browser errors were logged to the console",
+        "Background and foreground colors do not have a sufficient contrast ratio.",
+        "Elements with visible text labels do not have matching accessible names.",
+        "Network dependency tree"
+      ]
+    }
+  },
+  "basics": [
+    "index.html: add or fix a canonical link, og:image, a favicon, structured business data (JSON-LD).",
+    "No sitemap.xml yet. Use --seo https://yourdomain.com once the address is known."
+  ],
+  "failures": []
+}

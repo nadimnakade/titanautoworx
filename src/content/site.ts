@@ -50,7 +50,7 @@ const services: Service[] = [
     body: "From routine servicing to engine and gearbox work, our technicians diagnose properly and fix it right the first time.",
     points: ["Full & interim servicing", "Computer diagnostics", "Engine, clutch & gearbox", "Brakes & suspension"],
     icon: "wrench",
-    image: "/images/services/mechanical.jpg",
+    image: "/images/generated/titan-craft.png",
   },
   {
     slug: "bodywork",
@@ -59,7 +59,7 @@ const services: Service[] = [
     body: "Insurance and private accident repairs, panel replacement and straightening, returned to factory standard.",
     points: ["Insurance repairs", "Panel beating & replacement", "Chassis alignment", "Dent removal"],
     icon: "car-front",
-    image: "/images/services/bodywork.jpg",
+    image: "/images/generated/titan-hero.png",
   },
   {
     slug: "paint",
@@ -68,7 +68,7 @@ const services: Service[] = [
     body: "Spot repairs to full resprays, with precise colour matching, clear coat and machine polish.",
     points: ["Full & partial resprays", "Computer colour matching", "Paint correction", "Ceramic protection"],
     icon: "spray-can",
-    image: "/images/services/paint.jpg",
+    image: "/images/generated/titan-craft.png",
   },
   {
     slug: "classic",
@@ -77,7 +77,7 @@ const services: Service[] = [
     body: "We bring classics back to life with care for originality, from rust repair to concours-level finish.",
     points: ["Rust & metal fabrication", "Bare-metal respray", "Mechanical rebuilds", "Interior refresh"],
     icon: "car",
-    image: "/images/services/classic.jpg",
+    image: "/images/generated/titan-hero.png",
   },
   {
     slug: "projects",
@@ -86,7 +86,7 @@ const services: Service[] = [
     body: "Performance upgrades, camper conversions and expedition builds, planned and built in-house.",
     points: ["Performance upgrades", "Camper conversions", "Off-road & overland builds", "Custom fabrication"],
     icon: "settings",
-    image: "/images/services/projects.jpg",
+    image: "/images/generated/titan-expedition.png",
   },
   {
     slug: "towing",
@@ -95,7 +95,7 @@ const services: Service[] = [
     body: "Fast, safe and reliable transport for cars, classics, 4x4s and project vehicles, day or night.",
     points: ["24/7 response", "Cars, vans & 4x4s", "Local & island coverage", "Professional & insured"],
     icon: "truck",
-    image: "/images/services/towing.jpg",
+    image: "/images/generated/titan-expedition.png",
   },
   {
     slug: "parts",
@@ -104,26 +104,26 @@ const services: Service[] = [
     body: "OEM, quality aftermarket and performance parts, sourced and fitted by people who know them.",
     points: ["Genuine OEM parts", "Performance components", "Hard-to-find classic parts", "Supply & fit"],
     icon: "cpu",
-    image: "/images/services/parts.jpg",
+    image: "/images/generated/titan-craft.png",
   },
 ];
 
 const work: WorkItem[] = [
-  { title: "Porsche 911", subtitle: "Bodywork & Paint", category: "Accident Repairs", before: "/images/work/porsche-911-before.jpg", after: "/images/work/porsche-911-after.jpg" },
-  { title: "Ford Mustang", subtitle: "Full Restoration", category: "Restorations", before: "/images/work/mustang-before.jpg", after: "/images/work/mustang-after.jpg" },
-  { title: "BMW 3 Series", subtitle: "Accident Repair & Respray", category: "Accident Repairs", before: "/images/work/bmw-3-before.jpg", after: "/images/work/bmw-3-after.jpg" },
-  { title: "Audi RS3", subtitle: "Bodywork & Paint", category: "Paint", before: "/images/work/audi-rs3-before.jpg", after: "/images/work/audi-rs3-after.jpg" },
-  { title: "Mercedes C63", subtitle: "Panel Repair & Respray", category: "Bodywork", before: "/images/work/c63-before.jpg", after: "/images/work/c63-after.jpg" },
-  { title: "Range Rover", subtitle: "Bodywork & Paint", category: "Bodywork", before: "/images/work/range-rover-before.jpg", after: "/images/work/range-rover-after.jpg" },
+  { title: "Porsche 911", subtitle: "Bodywork & Paint", category: "Accident Repairs", before: "/images/generated/titan-hero-damaged.png", after: "/images/generated/titan-hero-repair.png" },
+  { title: "Ford Mustang", subtitle: "Full Restoration", category: "Restorations", before: "/images/explosion/keyframes/03-exploded.png", after: "/images/explosion/keyframes/00-assembled.png" },
+  { title: "BMW 3 Series", subtitle: "Accident Repair & Respray", category: "Accident Repairs", before: "/images/explosion/keyframes/01-opening.png", after: "/images/generated/titan-hero-repair.png" },
+  { title: "Audi RS3", subtitle: "Bodywork & Paint", category: "Paint", before: "/images/generated/titan-hero-damaged.png", after: "/images/generated/titan-hero.png" },
+  { title: "Mercedes C63", subtitle: "Panel Repair & Respray", category: "Bodywork", before: "/images/explosion/keyframes/02-expanded.png", after: "/images/explosion/keyframes/00-assembled.png" },
+  { title: "Range Rover", subtitle: "Bodywork & Paint", category: "Bodywork", before: "/images/explosion/keyframes/03-exploded.png", after: "/images/generated/titan-hero-repair.png" },
 ];
 
 const projects: Project[] = [
-  { title: "VW T6 Camper Conversion", subtitle: "Adventure Ready", category: "Camper Conversions", image: "/images/projects/vw-t6.jpg" },
-  { title: "Land Rover Defender 110", subtitle: "Off-Road Build", category: "Off-Road Builds", image: "/images/projects/defender-110.jpg" },
-  { title: "Porsche 911 GT3", subtitle: "Performance Build", category: "Performance Builds", image: "/images/projects/911-gt3.jpg" },
-  { title: "Classic Mini Cooper", subtitle: "Full Restoration", category: "Classic Restorations", image: "/images/projects/mini-cooper.jpg" },
-  { title: "BMW M3", subtitle: "Track Focused Build", category: "Performance Builds", image: "/images/projects/bmw-m3.jpg" },
-  { title: "Toyota Land Cruiser", subtitle: "Expedition Build", category: "Off-Road Builds", image: "/images/projects/land-cruiser.jpg" },
+  { title: "VW T6 Camper Conversion", subtitle: "Adventure Ready", category: "Camper Conversions", image: "/images/generated/titan-expedition.png" },
+  { title: "Land Rover Defender 110", subtitle: "Off-Road Build", category: "Off-Road Builds", image: "/images/generated/titan-expedition.png" },
+  { title: "Porsche 911 GT3", subtitle: "Performance Build", category: "Performance Builds", image: "/images/generated/titan-hero.png" },
+  { title: "Classic Mini Cooper", subtitle: "Full Restoration", category: "Classic Restorations", image: "/images/generated/titan-craft.png" },
+  { title: "BMW M3", subtitle: "Track Focused Build", category: "Performance Builds", image: "/images/generated/titan-hero.png" },
+  { title: "Toyota Land Cruiser", subtitle: "Expedition Build", category: "Off-Road Builds", image: "/images/generated/titan-expedition.png" },
 ];
 
 export const site = {
@@ -162,7 +162,7 @@ export const site = {
     line1: "Expert automotive",
     line2: "care for every road.",
     body: "From everyday repairs to full restorations and performance builds. Quality workmanship, genuine parts and a passion for all things automotive.",
-    image: "/images/hero.jpg",
+    image: "/images/generated/titan-hero.png",
   },
   trust: [
     { icon: "hard-hat", label: "Expert Technicians" },
@@ -186,7 +186,7 @@ export const site = {
       { icon: "map-pin", label: "Local & Island Coverage" },
       { icon: "shield-check", label: "Professional & Insured" },
     ] as { icon: IconName; label: string }[],
-    image: "/images/towing.jpg",
+    image: "/images/generated/titan-expedition.png",
   },
   about: {
     title: "Built on passion. Driven by precision.",
@@ -206,7 +206,7 @@ export const site = {
       { title: "Craftsmanship", body: "Factory-standard repairs and finishes we are proud to sign off." },
       { title: "Every make", body: "From city cars to classics, 4x4s and performance builds." },
     ],
-    image: "/images/about.jpg",
+    image: "/images/generated/titan-craft.png",
   },
   parts: {
     body: "Genuine OEM, quality aftermarket and performance parts — sourced quickly and fitted by our team, or supplied for your own project.",
@@ -218,7 +218,7 @@ export const site = {
       { title: "Off-Road & Overland", body: "Lift kits, protection, recovery gear and lighting." },
       { title: "Electrical", body: "Batteries, sensors, ECUs and lighting components." },
     ],
-    image: "/images/parts.jpg",
+    image: "/images/generated/titan-craft.png",
   },
 };
 
